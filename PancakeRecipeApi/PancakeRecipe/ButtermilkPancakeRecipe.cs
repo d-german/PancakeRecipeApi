@@ -41,7 +41,7 @@ public class ButtermilkPancakeRecipe
     public string GetRecipeHtml()
     {
         return $"For {_numPancakes} pancakes, you will need:<br/>" +
-            $"- {GetEggsAmount()} of eggs<br/>" +
+            $"- {GetEggsAmount()}<br/>" +
             $"- {GetButtermilkAmount()} of buttermilk<br/>" +
             $"- {GetOilAmount()} of oil<br/>" +
             $"- {GetBakingPowderAmount()} of baking powder<br/>" +
