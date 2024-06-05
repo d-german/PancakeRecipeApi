@@ -77,7 +77,9 @@ public class ButtermilkPancakeRecipe
 
     public string GetButtermilkAmount()
     {
-        return GetCupsAmountString(NumCupsButtermilk);
+        var cups = GetCupsAmountString(NumCupsButtermilk);
+        var grams = NumCupsButtermilk * 242m; // Convert cups to grams
+        return $"{cups} ( {grams.Round(1)} g )";
     }
 
     public string GetSugarAmount()
@@ -87,7 +89,9 @@ public class ButtermilkPancakeRecipe
 
     private static string GetPoundsSugarAmount(decimal numCupsSugar)
     {
-        return string.Format(PoundsStr, (numCupsSugar*NumPoundsPerCupSugar).Round(2));
+        var pounds = numCupsSugar * NumPoundsPerCupSugar;
+        var grams = pounds * 453.59237m;
+        return string.Format(PoundsStr, pounds.Round(2)) + $" ( {grams.Round(1)} g )";
     }
 
     public string GetFlourAmount()
@@ -98,12 +102,17 @@ public class ButtermilkPancakeRecipe
 
     private static string GetPoundsFlourAmount(decimal numCupsFlour)
     {
-        return string.Format(PoundsStr, (numCupsFlour*NumPoundsPerCupFlour).Round(1));
+        var pounds = numCupsFlour * NumPoundsPerCupFlour;
+        var grams = pounds * 453.59237m;
+        return string.Format(PoundsStr, pounds.Round(1)) + $" ( {grams.Round(1)} g )";
     }
 
     public string GetOilAmount()
     {
-        return GetCupsAmountString(NumCupsOil) + GetFlOz(NumCupsOil);
+        var cups = GetCupsAmountString(NumCupsOil);
+        var flOz = GetFlOz(NumCupsOil);
+        var grams = NumCupsOil * 190.5m;
+        return $"{cups} {flOz} ( {grams.Round(1)} g )";
     }
 
     private static string GetFlOz(decimal numCups)
