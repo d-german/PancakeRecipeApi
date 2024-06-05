@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PancakeRecipeApi", "PancakeRecipeApi\PancakeRecipeApi.csproj", "{BBBEFD8F-3DCF-4639-A963-D3A5EBBB2D1C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BBBEFD8F-3DCF-4639-A963-D3A5EBBB2D1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BBBEFD8F-3DCF-4639-A963-D3A5EBBB2D1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BBBEFD8F-3DCF-4639-A963-D3A5EBBB2D1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BBBEFD8F-3DCF-4639-A963-D3A5EBBB2D1C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
