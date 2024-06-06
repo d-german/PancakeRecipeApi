@@ -38,7 +38,6 @@ public class FracMethod
 			rD = (int)Math.Pow(10, rd.Length) - 1;
 		}
 
-		//just a few prime factors for testing purposes
 		var primes = new[]
 		{
 			97, 89, 83, 79, 73, 71, 67, 61, 59, 53, 47, 43, 37, 31, 29, 23, 19, 17, 13, 11, 7, 5, 3, 2
