@@ -15,8 +15,8 @@ public class VolumeAmountResult
 	private const string U1Token = "[U1]";
 	private const string U2Token = "[U2]";
 
-	public string NameU1 { get; set; }
-	public string NameU2 { get; set; }
+	public string NameU1 { get; init; }
+	public string NameU2 { get; init; }
 
 	private static Cardinality GetCardinality(decimal num)
 	{
@@ -33,7 +33,7 @@ public class VolumeAmountResult
 		var u1Card = GetCardinality(u1);
 		var u2Card = GetCardinality(u2);
 
-		var result = String.Empty;
+		var result = string.Empty;
 
 		if (u1Card == Cardinality.Zero && u2Card == Cardinality.Zero)
 		{
@@ -42,31 +42,31 @@ public class VolumeAmountResult
 
 		if (u1Card == Cardinality.Zero && u2Card == Cardinality.LessThanEqualToOne)
 		{
-			result = String.Format(ZeroU1OneU2, u2.ToNumericalString());
+			result = string.Format(ZeroU1OneU2, u2.ToNumericalString());
 		}
 
 		if (u1Card == Cardinality.Zero && u2Card == Cardinality.GreaterThanOne)
 		{
-			result = String.Format(ZeroU1MoreU2, u2.ToNumericalString());
+			result = string.Format(ZeroU1MoreU2, u2.ToNumericalString());
 		}
 
 		////////////////////////
 
 		if (u1Card == Cardinality.LessThanEqualToOne && u2Card == Cardinality.Zero)
 		{
-			result = String.Format(OneU1ZeroU2, u1.ToNumericalString());
+			result = string.Format(OneU1ZeroU2, u1.ToNumericalString());
 		}
 
 		if (u1Card == Cardinality.LessThanEqualToOne && u2Card == Cardinality.LessThanEqualToOne)
 		{
-			result = String.Format(OneU1OneU2,
+			result = string.Format(OneU1OneU2,
 				u1.ToNumericalString(),
 				u2.ToNumericalString());
 		}
 
 		if (u1Card == Cardinality.LessThanEqualToOne && u2Card == Cardinality.GreaterThanOne)
 		{
-			result = String.Format(OneU1MoreU2,
+			result = string.Format(OneU1MoreU2,
 				u1.ToNumericalString(),
 				u2.ToNumericalString());
 		}
@@ -75,19 +75,19 @@ public class VolumeAmountResult
 
 		if (u1Card == Cardinality.GreaterThanOne && u2Card == Cardinality.Zero)
 		{
-			result = String.Format(MoreU1ZeroU2, u1.ToNumericalString());
+			result = string.Format(MoreU1ZeroU2, u1.ToNumericalString());
 		}
 
 		if (u1Card == Cardinality.GreaterThanOne && u2Card == Cardinality.LessThanEqualToOne)
 		{
-			result = String.Format(MoreU1OneU2,
+			result = string.Format(MoreU1OneU2,
 				u1.ToNumericalString(),
 				u2.ToNumericalString());
 		}
 
 		if (u1Card == Cardinality.GreaterThanOne && u2Card == Cardinality.GreaterThanOne)
 		{
-			result = String.Format(MoreU1MoreU2,
+			result = string.Format(MoreU1MoreU2,
 				u1.ToNumericalString(),
 				u2.ToNumericalString());
 		}

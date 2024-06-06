@@ -1,4 +1,6 @@
-﻿namespace PancakeRecipe;
+﻿using System.Globalization;
+
+namespace PancakeRecipe;
 
 public static class Extensions
 {
@@ -34,7 +36,7 @@ public static class Extensions
 
 		if (ip != 0 && fp == 0)
 		{
-			return ip.ToString();
+			return ip.ToString(CultureInfo.CurrentCulture);
 		}
 
 		if (ip != 0 && fp != 0)
@@ -42,7 +44,7 @@ public static class Extensions
 			return $"{ip} and {FracMethod.Dec2Frac(fp)}";
 		}
 
-		return null;
+		return null!;
 	}
 
 	public static decimal Round(this decimal value, int numPlaces = 5)

@@ -34,6 +34,6 @@ public class TspAndTbsp
 		CalcTspsAndTbsps(numtsp);
 	}
 
-	public decimal CalculatedTsps { get; set; }
-	public decimal CalculatedTbsps { get; set; }
+	public decimal CalculatedTsps { get; private set; }
+	public decimal CalculatedTbsps { get; private set; }
 }

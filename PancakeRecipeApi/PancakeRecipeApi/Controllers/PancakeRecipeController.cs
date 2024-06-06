@@ -8,10 +8,9 @@ namespace PancakeRecipeApi.Controllers;
 public class PancakeRecipeController : Controller
 {
 	[HttpGet(Name = "GetPancakeRecipe")]
-	public IActionResult Get(int numPancakes = 6)
+	public IActionResult Get(int num = 6)
 	{
-		var res = new ButtermilkPancakeRecipe(numPancakes);
-		var rec = res.GetRecipeHtml();
-		return Content(rec, "text/html");
+		var res = new ButtermilkPancakeRecipe(num);
+		return Content(res.GetRecipeHtml(), "text/html");
 	}
 }

@@ -12,8 +12,8 @@ public class CupsAndGallons
 		CalcCupsAndGallons(cups.Value);
 	}
 
-	public decimal CalculatedGals { get; set; }
-	public decimal CalculatedCups { get; set; }
+	public decimal CalculatedGals { get; private set; }
+	public decimal CalculatedCups { get; private set; }
 
 	private void CalcCupsAndGallons(decimal numCups)
 	{
@@ -35,7 +35,7 @@ public class CupsAndGallons
 			return;
 		}
 
-		if (numCups > HalfGallon && numCups < Gallon)
+		if (numCups is > HalfGallon and < Gallon)
 		{
 			CalculatedGals += Half;
 			CalculatedCups += numCups - HalfGallon;
