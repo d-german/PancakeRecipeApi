@@ -59,31 +59,29 @@ public class ButtermilkPancakeRecipe
 	private decimal NumTspBakingPowder { get; set; }
 	private decimal NumCupsSugar { get; set; }
 
-	public string Recipe => GetRecipeHtml();
-
-	public string GetEggsAmount()
+	private string GetEggsAmount()
 	{
 		return Eggs.GetQuantity((int)NumEggs);
 	}
 
-	public string GetBakingSodaAmount()
+	private string GetBakingSodaAmount()
 	{
 		return GetTeaspoonQuantityString(NumTspBakingSoda);
 	}
 
-	public string GetBakingPowderAmount()
+	private string GetBakingPowderAmount()
 	{
 		return GetTeaspoonQuantityString(NumTspBakingPowder);
 	}
 
-	public string GetButtermilkAmount()
+	private string GetButtermilkAmount()
 	{
 		var cups = GetCupsAmountString(NumCupsButtermilk);
 		var grams = NumCupsButtermilk * 242m; // Convert cups to grams
 		return $"{cups} ( {grams.Round(1)} g )";
 	}
 
-	public string GetSugarAmount()
+	private string GetSugarAmount()
 	{
 		return GetCupsAmountString(NumCupsSugar) + GetPoundsSugarAmount(NumCupsSugar);
 	}
@@ -95,7 +93,7 @@ public class ButtermilkPancakeRecipe
 		return string.Format(PoundsStr, pounds.Round(2)) + $" ( {grams.Round(1)} g )";
 	}
 
-	public string GetFlourAmount()
+	private string GetFlourAmount()
 	{
 		//http://www.traditionaloven.com/conversions_of_measures/flour_volume_weight.html
 		return GetCupsAmountString(NumCupsFlower) + GetPoundsFlourAmount(NumCupsFlower);
@@ -108,7 +106,7 @@ public class ButtermilkPancakeRecipe
 		return string.Format(PoundsStr, pounds.Round(1)) + $" ( {grams.Round(1)} g )";
 	}
 
-	public string GetOilAmount()
+	private string GetOilAmount()
 	{
 		var cups = GetCupsAmountString(NumCupsOil);
 		var flOz = GetFlOz(NumCupsOil);
@@ -121,28 +119,28 @@ public class ButtermilkPancakeRecipe
 		return string.Format(FlOzStr, (numCups * 8m).Round(1));
 	}
 
-	public string GetCupsAmountString(decimal numCups)
+	private string GetCupsAmountString(decimal numCups)
 	{
 		var galsAndCups = new CupsAndGallons(new Cups(numCups));
 		var gals = galsAndCups.CalculatedGals;
 		var cups = galsAndCups.CalculatedCups;
-		var teaspoon = string.Empty;
+		var tspAmount = string.Empty;
 
 		var fp = cups.FractionalPart();
 
 		if (fp is < 0.25m and > 0)
 		{
 			cups = cups.IntegralPart();
-			teaspoon = GetTeaspoonQuantityString(fp * NumberTspsPerCup);
+			tspAmount = GetTeaspoonQuantityString(fp * NumberTspsPerCup);
 		}
 
 		var cupsResult = _galsAndCupsResult.GetVolumnAmount(
 			GetCommonFracMeasure(gals),
 			GetCommonFracMeasure(cups));
 
-		if (teaspoon.Equals("0"))
+		if (tspAmount.Equals("0"))
 		{
-			teaspoon = string.Empty;
+			tspAmount = string.Empty;
 		}
 
 		if (cupsResult.Equals("0"))
@@ -150,12 +148,12 @@ public class ButtermilkPancakeRecipe
 			cupsResult = string.Empty;
 		}
 
-		return (cupsResult + " " + teaspoon).Trim();
+		return $"{cupsResult} {tspAmount}".Trim();
 	}
 
-	public string GetTeaspoonQuantityString(decimal teaspoonQuantity)
+	private string GetTeaspoonQuantityString(decimal teaspoonQuantity)
 	{
-		var cupAmount = string.Empty;
+		var cupsResult = string.Empty;
 		const decimal oneForth = 0.25m;
 		const int numTspsPerOneForthCup = 12;
 
@@ -170,7 +168,7 @@ public class ButtermilkPancakeRecipe
 				calculatedNumCups += oneForth;
 			}
 
-			cupAmount = GetCupsAmountString(calculatedNumCups);
+			cupsResult = GetCupsAmountString(calculatedNumCups);
 			teaspoonQuantity = numCups * NumberTspsPerCup;
 		}
 
@@ -183,12 +181,12 @@ public class ButtermilkPancakeRecipe
 			tspAmount = string.Empty;
 		}
 
-		if (cupAmount.Equals("0"))
+		if (cupsResult.Equals("0"))
 		{
-			cupAmount = string.Empty;
+			cupsResult = string.Empty;
 		}
 
-		return (cupAmount + " " + tspAmount).Trim();
+		return $"{cupsResult} {tspAmount}".Trim();
 	}
 
 	public static Tsp ToTsp(Cups cup)

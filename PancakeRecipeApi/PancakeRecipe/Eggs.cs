@@ -4,47 +4,35 @@ public class Eggs
 {
 	public static string GetQuantity(int numEggs)
 	{
-		if (numEggs == 1)
+		switch (numEggs)
 		{
-			return "1 egg";
+			case 1:
+				return "1 egg";
+			case < 12:
+				return $"{numEggs} eggs";
+			case 12:
+				return "1 dozen";
 		}
 
-		if (numEggs < 12)
+		var numDozen = CalcNumDozen(numEggs);
+
+		var leftover = numEggs % 12;
+
+		return leftover switch
 		{
-			return $"{numEggs} eggs";
-		}
-
-		if (numEggs == 12)
-		{
-			return "1 dozen";
-		}
-
-		int numDozen = CalcNumDozen(numEggs);
-
-		int leftover = numEggs % 12;
-
-		if (leftover == 0)
-		{
-			return $"{numDozen} dozen";
-		}
-
-		if (leftover == 1)
-		{
-			return $"{numDozen} dozen and 1 egg";
-		}
-
-		return $"{numDozen} dozen and {leftover} eggs";
+			0 => $"{numDozen} dozen",
+			1 => $"{numDozen} dozen and 1 egg",
+			_ => $"{numDozen} dozen and {leftover} eggs"
+		};
 	}
 
-	public static int CalcNumDozen(int numItems)
+	private static int CalcNumDozen(int numItems)
 	{
-		if (numItems < 12) return 0;
-
-		if (numItems == 12)
+		return numItems switch
 		{
-			return 1;
-		}
-
-		return numItems / 12;
+			< 12 => 0,
+			12 => 1,
+			_ => numItems / 12
+		};
 	}
 }

@@ -17,42 +17,37 @@ public class CupsAndGallons
 
 	private void CalcCupsAndGallons(decimal numCups)
 	{
-		if (numCups < HalfGallon)
+		while (true)
 		{
-			CalculatedCups += numCups;
-			return;
+			switch (numCups)
+			{
+				case < HalfGallon:
+					CalculatedCups += numCups;
+					return;
+				case HalfGallon:
+					CalculatedGals += Half;
+					return;
+				case Gallon:
+					CalculatedGals += One;
+					return;
+				case > HalfGallon and < Gallon:
+					CalculatedGals += Half;
+					CalculatedCups += numCups - HalfGallon;
+					return;
+			}
+
+			if (numCups <= Gallon) return;
+
+			CalculatedCups += numCups.FractionalPart();
+			var ip = numCups.IntegralPart();
+
+			while (ip > Gallon)
+			{
+				CalculatedGals += One;
+				ip -= Gallon;
+			}
+
+			numCups = ip;
 		}
-
-		if (numCups == HalfGallon)
-		{
-			CalculatedGals += Half;
-			return;
-		}
-
-		if (numCups == Gallon)
-		{
-			CalculatedGals += One;
-			return;
-		}
-
-		if (numCups is > HalfGallon and < Gallon)
-		{
-			CalculatedGals += Half;
-			CalculatedCups += numCups - HalfGallon;
-			return;
-		}
-
-		if (numCups <= Gallon) return;
-
-		CalculatedCups += numCups.FractionalPart();
-		var ip = numCups.IntegralPart();
-
-		while (ip > Gallon)
-		{
-			CalculatedGals += One;
-			ip -= Gallon;
-		}
-
-		CalcCupsAndGallons(ip);
 	}
 }

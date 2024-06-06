@@ -16,8 +16,9 @@ public class FracMethod
 	{
 		var neg = ' ';
 		var dblDecimal = dbl;
-		if (dblDecimal == (int)dblDecimal)
-			return dblDecimal.ToString(CultureInfo.InvariantCulture); //return no if it's not a decimal
+
+		if (dblDecimal == (int)dblDecimal) return dblDecimal.ToString(CultureInfo.InvariantCulture); //return no if it's not a decimal
+
 		if (dblDecimal < 0)
 		{
 			dblDecimal = Math.Abs(dblDecimal);
@@ -40,7 +41,7 @@ public class FracMethod
 		//just a few prime factors for testing purposes
 		var primes = new[]
 		{
-			47, 43, 37, 31, 29, 23, 19, 17, 13, 11, 7, 5, 3, 2
+			97, 89, 83, 79, 73, 71, 67, 61, 59, 53, 47, 43, 37, 31, 29, 23, 19, 17, 13, 11, 7, 5, 3, 2
 		};
 		foreach (var i in primes) ReduceNo(i, ref rD, ref rN);
 

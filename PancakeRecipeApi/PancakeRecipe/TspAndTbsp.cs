@@ -11,27 +11,28 @@ public class TspAndTbsp
 
 	private void CalcTspsAndTbsps(decimal numTsps)
 	{
-		var numtsp = numTsps;
-
-		if (numtsp < 3)
+		while (true)
 		{
-			CalculatedTsps += numtsp;
-			return;
-		}
+			var calculatedTsps = numTsps;
 
-		if (numtsp == 3)
-		{
-			CalculatedTbsps += 1;
-			return;
-		}
+			switch (calculatedTsps)
+			{
+				case < 3:
+					CalculatedTsps += calculatedTsps;
+					return;
+				case 3:
+					CalculatedTbsps += 1;
+					return;
+			}
 
-		while (numtsp > 3)
-		{
-			CalculatedTbsps += 1;
-			numtsp -= 3;
-		}
+			while (calculatedTsps > 3)
+			{
+				CalculatedTbsps += 1;
+				calculatedTsps -= 3;
+			}
 
-		CalcTspsAndTbsps(numtsp);
+			numTsps = calculatedTsps;
+		}
 	}
 
 	public decimal CalculatedTsps { get; private set; }

@@ -4,11 +4,6 @@ namespace PancakeRecipe;
 
 public static class Extensions
 {
-	public static void Dump(this object value)
-	{
-		System.Diagnostics.Debug.WriteLine(value.ToString());
-	}
-
 	public static decimal IntegralPart(this decimal value)
 	{
 		return Math.Truncate(value);
@@ -24,14 +19,12 @@ public static class Extensions
 		var ip = value.IntegralPart();
 		var fp = value.FractionalPart();
 
-		if (ip == 0 && fp == 0)
+		switch (ip)
 		{
-			return "0";
-		}
-
-		if (ip == 0 && fp != 0)
-		{
-			return FracMethod.Dec2Frac(fp);
+			case 0 when fp == 0:
+				return "0";
+			case 0 when fp != 0:
+				return FracMethod.Dec2Frac(fp);
 		}
 
 		if (ip != 0 && fp == 0)
