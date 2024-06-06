@@ -1,4 +1,6 @@
-﻿namespace PancakeRecipe;
+﻿using System.Text;
+
+namespace PancakeRecipe;
 
 public class ButtermilkPancakeRecipe
 {
@@ -40,15 +42,26 @@ public class ButtermilkPancakeRecipe
 
 	public string GetRecipeHtml()
 	{
-		return $"For {_numPancakes} pancakes, you will need:<br/>" +
-		       $"- {GetEggsAmount()}<br/>" +
-		       $"- {GetButtermilkAmount()} of buttermilk<br/>" +
-		       $"- {GetBakingPowderAmount()} of vanilla<br/>" + // adding vanilla
-		       $"- {GetOilAmount()} of oil<br/>" +
-		       $"- {GetBakingPowderAmount()} of baking powder<br/>" +
-		       $"- {GetBakingSodaAmount()} of baking soda<br/>" +
-		       $"- {GetFlourAmount()} of flour<br/>" +
-		       $"- {GetSugarAmount()} of sugar";
+		var instructions = new StringBuilder();
+		instructions.AppendLine($"For {_numPancakes} pancakes, you will need:<br/>");
+		instructions.AppendLine($"- {GetEggsAmount()}<br/>");
+		instructions.AppendLine($"- {GetButtermilkAmount()} of buttermilk<br/>");
+		instructions.AppendLine($"- {GetBakingPowderAmount()} of vanilla<br/>"); // adding vanilla
+		instructions.AppendLine($"- {GetOilAmount()} of oil<br/>");
+		instructions.AppendLine($"- {GetBakingPowderAmount()} of baking powder<br/>");
+		instructions.AppendLine($"- {GetBakingSodaAmount()} of baking soda<br/>");
+		instructions.AppendLine($"- {GetFlourAmount()} of flour<br/>");
+		instructions.AppendLine($"- {GetSugarAmount()} of sugar<br/><br/>");
+
+		instructions.AppendLine("Instructions:<br/>");
+		instructions.AppendLine("First, mix the wet ingredients well.<br/>");
+		instructions.AppendLine("Next, stir in the dry ingredients just until everything is wet. Don't overmix!<br/>");
+		instructions.AppendLine("The mixture should be slightly lumpy. Let it sit for a few minutes to allow the batter to expand a little.<br/>");
+		instructions.AppendLine("Use a griddle set to 325 - 350 degrees or a skillet set to medium heat.<br/>");
+		instructions.AppendLine("The batter is a little thick, so after putting some on the griddle, use a spoon to flatten it out.<br/>");
+		instructions.AppendLine("Cook for about 2 minutes on each side or until they look as desired.<br/>");
+
+		return instructions.ToString();
 	}
 
 	private decimal NumEggs { get; set; }
