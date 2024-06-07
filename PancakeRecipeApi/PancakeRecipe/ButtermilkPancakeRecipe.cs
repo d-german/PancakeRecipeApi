@@ -40,29 +40,30 @@ public class ButtermilkPancakeRecipe
 		CalcRecipe();
 	}
 
-	public string GetRecipeHtml()
-	{
-		var instructions = new StringBuilder();
-		instructions.AppendLine($"For {_numPancakes} pancakes, you will need:<br/>");
-		instructions.AppendLine($"- {GetEggsAmount()}<br/>");
-		instructions.AppendLine($"- {GetButtermilkAmount()} of buttermilk<br/>");
-		instructions.AppendLine($"- {GetBakingPowderAmount()} of vanilla<br/>"); // adding vanilla
-		instructions.AppendLine($"- {GetOilAmount()} of oil<br/>");
-		instructions.AppendLine($"- {GetBakingPowderAmount()} of baking powder<br/>");
-		instructions.AppendLine($"- {GetBakingSodaAmount()} of baking soda<br/>");
-		instructions.AppendLine($"- {GetFlourAmount()} of flour<br/>");
-		instructions.AppendLine($"- {GetSugarAmount()} of sugar<br/><br/>");
+public string GetRecipeHtml()
+{
+    var instructions = new StringBuilder();
+    instructions.AppendLine($"For {_numPancakes} pancakes, you will need:<br/>");
+    instructions.AppendLine($"- {GetEggsAmount()}<br/>");
+    instructions.AppendLine($"- {GetButtermilkAmount()} of buttermilk<br/>");
+    instructions.AppendLine($"- {GetOilAmount()} of oil<br/>");
+    instructions.AppendLine($"- {GetBakingPowderAmount()} of baking powder<br/>");
+    instructions.AppendLine($"- {GetBakingSodaAmount()} of baking soda<br/>");
+    instructions.AppendLine($"- {GetFlourAmount()} of flour<br/>");
+    instructions.AppendLine($"- {GetSugarAmount()} of sugar<br/><br/>");
 
-		instructions.AppendLine("Instructions:<br/>");
-		instructions.AppendLine("First, mix the wet ingredients well.<br/>");
-		instructions.AppendLine("Next, stir in the dry ingredients just until everything is wet. Don't over mix!<br/>");
-		instructions.AppendLine("The mixture should be slightly lumpy. Let it sit for a few minutes to allow the batter to expand a little.<br/>");
-		instructions.AppendLine("Use a griddle set to 325 - 350 degrees or a skillet set to medium heat.<br/>");
-		instructions.AppendLine("The batter is a little thick, so after putting some on the griddle, use a spoon to flatten it out.<br/>");
-		instructions.AppendLine("Cook for about 2 minutes on each side or until they look as desired.<br/>");
+    instructions.AppendLine("Instructions:<br/>");
+    instructions.AppendLine("<ol>");
+    instructions.AppendLine("<li>Mix the wet ingredients well.</li>");
+    instructions.AppendLine("<li>Stir in the dry ingredients just until everything is wet. Don't over mix!</li>");
+    instructions.AppendLine("<li>The mixture should be slightly lumpy. Let it sit for a few minutes to allow the batter to expand a little.</li>");
+    instructions.AppendLine("<li>Use a griddle set to 325 - 350 degrees or a skillet set to medium heat.</li>");
+    instructions.AppendLine("<li>The batter is a little thick, so after putting some on the griddle, use a spoon to flatten it out.</li>");
+    instructions.AppendLine("<li>Cook for about 2 minutes on each side or until they look as desired.</li>");
+    instructions.AppendLine("</ol>");
 
-		return instructions.ToString();
-	}
+    return instructions.ToString();
+}
 
 	private decimal NumEggs { get; set; }
 	private decimal NumCupsButtermilk { get; set; }
