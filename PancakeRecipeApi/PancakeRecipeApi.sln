@@ -4,6 +4,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PancakeRecipeApi", "Pancake
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PancakeRecipe", "PancakeRecipe\PancakeRecipe.csproj", "{C5CE8E97-FA3E-41E6-A7BF-5C47702A11F5}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{F4587BC6-0326-405F-8E81-0EDCDE356DE2}"
+	ProjectSection(SolutionItems) = preProject
+		..\.github\workflows\main_pancakeraypecxc.yml = ..\.github\workflows\main_pancakeraypecxc.yml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
