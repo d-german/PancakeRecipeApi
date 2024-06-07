@@ -55,7 +55,7 @@ public class ButtermilkPancakeRecipe
 
 		instructions.AppendLine("Instructions:<br/>");
 		instructions.AppendLine("First, mix the wet ingredients well.<br/>");
-		instructions.AppendLine("Next, stir in the dry ingredients just until everything is wet. Don't overmix!<br/>");
+		instructions.AppendLine("Next, stir in the dry ingredients just until everything is wet. Don't over mix!<br/>");
 		instructions.AppendLine("The mixture should be slightly lumpy. Let it sit for a few minutes to allow the batter to expand a little.<br/>");
 		instructions.AppendLine("Use a griddle set to 325 - 350 degrees or a skillet set to medium heat.<br/>");
 		instructions.AppendLine("The batter is a little thick, so after putting some on the griddle, use a spoon to flatten it out.<br/>");
