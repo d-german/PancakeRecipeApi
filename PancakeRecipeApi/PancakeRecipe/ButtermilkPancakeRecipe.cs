@@ -38,6 +38,7 @@ public class ButtermilkPancakeRecipe
 			NameU2 = "cup"
 		};
 		CalcRecipe();
+		NumTspVanilla = NumTspBakingPowder;
 	}
 
 public string GetRecipeHtml()
@@ -47,6 +48,7 @@ public string GetRecipeHtml()
     instructions.AppendLine($"- {GetEggsAmount()}<br/>");
     instructions.AppendLine($"- {GetButtermilkAmount()} of buttermilk<br/>");
     instructions.AppendLine($"- {GetOilAmount()} of oil<br/>");
+    instructions.AppendLine($"- {GetVanillaAmount()} of vanilla<br/>");
     instructions.AppendLine($"- {GetBakingPowderAmount()} of baking powder<br/>");
     instructions.AppendLine($"- {GetBakingSodaAmount()} of baking soda<br/>");
     instructions.AppendLine($"- {GetFlourAmount()} of flour<br/>");
@@ -72,6 +74,7 @@ public string GetRecipeHtml()
 	private decimal NumTspBakingSoda { get; set; }
 	private decimal NumTspBakingPowder { get; set; }
 	private decimal NumCupsSugar { get; set; }
+	public decimal NumTspVanilla { get; set; }
 
 	private string GetEggsAmount()
 	{
@@ -81,6 +84,11 @@ public string GetRecipeHtml()
 	private string GetBakingSodaAmount()
 	{
 		return GetTeaspoonQuantityString(NumTspBakingSoda);
+	}
+
+	public string GetVanillaAmount()
+	{
+		return GetTeaspoonQuantityString(NumTspVanilla);
 	}
 
 	private string GetBakingPowderAmount()
